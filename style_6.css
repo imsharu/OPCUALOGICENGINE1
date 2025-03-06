@@ -1,0 +1,208 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.main-container {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.left-panel {
+  width: 25%;
+  background-color: #f4f4f4;
+  overflow-y: auto;
+  padding: 10px;
+  border-right: 1px solid #ccc;
+}
+
+#runButton {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+#runButton:hover {
+  background-color: #45a049;
+}
+
+.canvas-container {
+  position: relative;
+  flex: 1;
+  overflow: auto;
+}
+
+#logicCanvas {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border: 1px solid black;
+  z-index: 1;
+}
+
+#linesCanvas {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Sidebar items */
+.draggable {
+  margin: 5px 0;
+  padding: 10px;
+  background-color: #ddd;
+  border-radius: 4px;
+  cursor: grab;
+}
+
+/* Operation Box: grey background with black header */
+.operation-box {
+  width: 220px;
+  height: 290px;
+  background-color: grey;
+  color: white;
+  border-radius: 5px;
+  padding: 10px;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  z-index: 3;
+  border: 1px solid #aaa;
+  cursor: move;
+  transition: height 0.2s;
+  overflow: hidden;
+}
+
+/* Header styling: operation name in black */
+.operation-name {
+  font-weight: bold;
+  color: black;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: default;
+}
+
+.toggle-btn {
+  font-size: 16px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+  margin-left: auto;
+}
+
+.delete-btn {
+  font-size: 16px;
+  color: red;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+  margin-left: 10px;
+}
+
+.config {
+  margin-top: 5px;
+  padding: 3px;
+  background-color: #eef;
+  border: 1px solid #99c;
+  border-radius: 3px;
+  font-size: 12px;
+}
+.config label {
+  margin-right: 5px;
+}
+.config select, .config input {
+  margin-right: 10px;
+  font-size: 12px;
+}
+
+.output-value {
+  text-align: center;
+  margin-bottom: 5px;
+  font-weight: bold;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 5px;
+  color: black;
+}
+
+.output-handle {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #333;
+  cursor: grab;
+  position: absolute;
+  right: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.output-handle.dragging {
+  background: orange;
+}
+
+.resize-handle {
+  width: 12px;
+  height: 12px;
+  background-color: #666;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  cursor: se-resize;
+}
+
+.inputs-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.input {
+  margin: 3px 0;
+  font-size: 14px;
+  color: red;
+  cursor: pointer;
+  border: 1px solid transparent;
+  padding: 3px;
+  outline: none;
+}
+.input:focus {
+  border: 1px solid #aaa;
+}
+.input[contenteditable="true"] {
+  min-height: 18px;
+}
+
+.collapsible {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.nested {
+  display: none;
+  margin-left: 15px;
+}
+.active > .nested {
+  display: block !important;
+}
+
+.operation-box.minimized {
+  height: auto;
+  cursor: default;
+}
